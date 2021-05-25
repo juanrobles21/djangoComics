@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/details_character.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap"
+          rel="stylesheet">
+    <title>Comics</title>
+
+</head>
+<body>
+<header>
+    <div class="contenedor">
+        <a href={% url 'UniverseComics' %}>
+            <h2 class="logo">UNIVERSECOMICS</h2>
+        </a>
+        <nav>
+            <a href={% url 'UniverseComics' %}>Inicio</a>
+            <a href={% url 'universes' %}>Universes</a>
+            <a href={% url 'characters' %} class="activo">Characters</a>
+            <a href={% url 'powers' %}>Powers</a>
+            <a href={% url 'logout' %}><i class="fas fa-sign-out-alt"></i></a>
+        </nav>
+    </div>
+</header>
+<main>
+        <div class="principal">
+        <div class="contenedor">
+        <img src="{{ character.image2 }}">
+        <div class="aliniacion-contenido">
+        <h1 class=titulo>{{ character.name }}</h1>
+        <p>{{ character.description }}</p>
+    </div>
+    </div>
+    </div>
+
+    </div>
+    <div class="title">
+        <div class="contenedor">
+            <h3>Character</h3>
+        </div>
+    </div>
+    <div class="character">
+        <div class="contenedor">
+                <div class="card">
+                <img src="{{ character.image }}">
+                <a class="delete" href="{% url 'delete_character' character.id %}"><i
+                        class="fas fa-minus-circle"></i></a>
+                <div class="contenido">
+                <a class="edit" href="{% url 'update_character' character.id %}">Edit<i class="fas fa-edit"></i>
+                </a>
+                <h1>{{ character.name }}</h1>
+                <p>{{ character.description }}</p>
+            {% for power in powers %}
+                <h3>Power: {{ power.powers_id.name}} - Number: {{ power.number}}%</h3>
+            {% endfor %}
+            </div>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+<footer id="contacto">
+    <div class="contenedor">
+        <div class="piePagina">
+            <div class="contactoP">
+                <h2 class="name">Juan Pablo Robles Arias</h2>
+                <p>Construcción de Software</p>
+            </div>
+            <div class="RedesSociales">
+                <a href="https://www.instagram.com/juanrobles_21/"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.link/kel6ey"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/juan.pablo.robles.arias.21/"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+        <div class="line"></div>
+
+    </div>
+
+</footer>
+<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+</body>
+</html>

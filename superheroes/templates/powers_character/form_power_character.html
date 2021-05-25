@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FORM CHARACTER</title>
+    <link rel="stylesheet" href="{% static 'css/formulario_power_character.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+
+<div class="character-box">
+    <h1 class="titulo">SELECT POWER CHARACTER</h1>
+    <form action="{% url 'form_power_character' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+       <input type="submit" value="Save">
+
+    </form>
+</div>
+
+</body>
+</html>

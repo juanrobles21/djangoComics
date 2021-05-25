@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap"
+          rel="stylesheet">
+    <title>Comics</title>
+
+</head>
+<body>
+<header>
+    <div class="contenedor">
+        <a href={% url 'UniverseComics' %}>
+            <h2 class="logo">UNIVERSECOMICS</h2>
+        </a>
+        <nav>
+            <a href={% url 'UniverseComics' %} class="activo">Inicio</a>
+            <a href={% url 'universes' %}>Universes</a>
+            <a href={% url 'characters' %}>Characters</a>
+            <a href={% url 'powers' %}>Powers</a>
+            <a href={% url 'logout' %}><i class="fas fa-sign-out-alt"></i></a>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="principal">
+        <div class="contenedor">
+            <h3 class=titulo>Legends</h3>
+            <p class=descripcion>Revisit the epic heroes, villains and moments from across the MCU in preparation for
+                the stories still to come. Each dynamic segment feeds directly into the upcoming series — setting the
+                stage for future events. This series weaves together the many threads that constitute the unparalleled
+                Marvel Cinematic Universe.</p>
+            <a href={% url 'characters' %}>
+                <button role="button" class="boton"><i class="fas fa-info-circle"></i>More information</button>
+            </a>
+        </div>
+
+    </div>
+    <div class="title">
+        <div class="contenedor">
+            <h3>Characters</h3>
+        </div>
+    </div>
+    <div class="character">
+        <div class="contenedor">
+            {% for character in characters %}
+                <div class="card">
+                    <figure>
+                        <img src="{{ character.character_id.image }}">
+                    </figure>
+                    <div class="contenido">
+                        <h1 align="center">{{ character.character_id.name }}</h1>
+                        <a href="{% url 'characters_detail' character.character_id.id %}" alig="center">lore more</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="video">
+        <div class="contenedor">
+            <iframe width="100%" height="650" src="https://www.youtube.com/embed/TcMBFSGVi1c"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="historia">
+        <div class="contenedor">
+            <h1>Comics</h1>
+            <p>The term comic is used to designate those forms of graphic story that are assembled based on drawings
+                framed in vignettes. The comic can also be known as a comic strip depending on the place or region in
+                which it is referred to. The comic is an art form that has become popular especially in the twentieth
+                century, although we can find various antecedents of this form of story in other times in
+                history.<br><br>
+
+                The comic can be defined as a story that is built mainly on the basis of drawings or images. It may or
+                may not have text but even if it does, the text never occupies a main role compared to the drawings as
+                it does in other forms of story such as the novel or poetry. The background that the text has in this
+                graphic form is complemented by other elements such as symbols, onomatopoeia, expressive forms, etc. The
+                comic is usually diagrammed in vignettes (which may or may not be marked) within which an act or
+                dialogue takes place. Each vignette represents a specific moment of the situation told, as it can also
+                represent different situations. In general, it is for all this considered an art form although for many
+                it is in an alternative way (that is, not following the traditional canons).<br><br>
+
+                The presence and popularization of the comic was largely due to its reaching the mass public through the
+                publication of magazines, newspapers and other accessible means of information. Comic strip artists
+                became especially popular with children despite the fact that many of the comics were aimed at
+                adults.<br>
+
+                In comics we can find endless themes and ways of representing each scene. However, superhero stories,
+                fantastic and mythical characters, exaggerated, absurd situations, full of expressiveness (violence,
+                fear, love, passion) are popular.</p>
+        </div>
+    </div>
+
+
+</main>
+<footer id="contacto">
+    <div class="contenedor">
+        <div class="piePagina">
+            <div class="contactoP">
+                <h2 class="name">Juan Pablo Robles Arias</h2>
+                <p>Construcción de Software</p>
+            </div>
+            <div class="RedesSociales">
+                <a href="https://www.instagram.com/juanrobles_21/"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.link/kel6ey"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/juan.pablo.robles.arias.21/"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+        <div class="line"></div>
+
+    </div>
+
+</footer>
+<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+</body>
+</html>

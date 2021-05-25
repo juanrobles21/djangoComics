@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap"
+          rel="stylesheet">
+    <title>Comics</title>
+
+</head>
+<body>
+<header>
+    <div class="contenedor">
+        <a href={% url 'UniverseComics' %}>
+            <h2 class="logo">UNIVERSECOMICS</h2>
+        </a>
+        <nav>
+            <a href={% url 'UniverseComics' %}>Inicio</a>
+            <a href={% url 'universes' %} class="activo">Universes</a>
+            <a href={% url 'characters' %}>Characters</a>
+            <a href={% url 'powers' %}>Powers</a>
+            <a href={% url 'logout' %}><i class="fas fa-sign-out-alt"></i></a>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="principal">
+
+        <div class="contenedor">
+                <h3 class=titulo>{{ detail.name }}</h3>
+            <a href={% url 'form_character' %}>
+                <button role="button" class="boton"><i class="fab fa-wpforms"></i>Form Characeter</button>
+            </a>
+        </div>
+
+    </div>
+    <div class="title">
+        <div class="contenedor">
+            <h3>Universe</h3>
+        </div>
+    </div>
+    <div class="character">
+        <div class="contenedor">
+            {% for character in characters %}
+                <div class="card">
+                    <img src="{{ character.image }}">
+                    <div class="contenido">
+                        <h1>{{ character.name }}</h1>
+                        <h3>Universe:{{ character.universe_id }}</h3>
+                        <a href="{% url 'characters_detail' character.id %}">lore more</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</main>
+<footer id="contacto">
+    <div class="contenedor">
+        <div class="piePagina">
+            <div class="contactoP">
+                <h2 class="name">Juan Pablo Robles Arias</h2>
+                <p>Construcción de Software</p>
+            </div>
+            <div class="RedesSociales">
+                <a href="https://www.instagram.com/juanrobles_21/"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.link/kel6ey"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/juan.pablo.robles.arias.21/"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+        <div class="line"></div>
+
+    </div>
+
+</footer>
+<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+</body>
+</html>
